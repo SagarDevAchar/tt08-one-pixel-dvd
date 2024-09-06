@@ -10,15 +10,24 @@ from cocotb.triggers import ClockCycles
 async def test_loopback(dut):
     dut._log.info("Start")
 
-    # Set the clock period to 40 us (25 MHz)
+    # Set the clock period to 40 ns (25 MHz)
     clock = Clock(dut.clk, 40, units="ns")
     cocotb.start_soon(clock.start())
 
     # Reset
     dut._log.info("Reset")
-
-    # When under reset: ui_in -> uo_out
     dut.ui_in.value = 0
     dut.rst_n.value = 0
-    await ClockCycles(dut.clk, 1)
+    await ClockCycles(dut.clk, 10)
+    dut.rst_n.value = 1
+
+    dut._log.info("Test project behavior")
+
+    # Set the input values you want to test
+    # dut.ui_in.value = 20
+    # dut.uio_in.value = 30
+    # TODO
+
+    # Wait for one clock cycle to see the output values
+    await ClockCycles(dut.clk, int(1e6))
 
