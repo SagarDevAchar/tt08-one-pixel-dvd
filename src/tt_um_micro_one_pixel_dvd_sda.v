@@ -49,8 +49,8 @@ module tt_um_micro_one_pixel_dvd_sda (
     if (~rst_n) begin
       dvd_x <= 5'd10;
       dvd_y <= 4'd7;
-      dir_x <= 1'd1;
-      dir_y <= 1'd1;
+      dir_x <= ui_in[7];
+      dir_y <= ui_in[6];
     end else begin
       // dvd_x <= dvd_x + 1;
       if (dir_x) begin
