@@ -20,7 +20,7 @@ module tb ();
   wire [7:0] uo_out;
 
   // Replace tt_um_micro_test with your module name:
-  tt_um_micro_test user_project (
+  tt_um_micro_one_pixel_dvd_sda user_project (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST

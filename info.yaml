@@ -1,43 +1,43 @@
 # Tiny Tapeout project information
 project:
-  title:        "Tiny Tapeout 8 Micro Test"      # Project title
-  author:       "Uri Shaked"             # Your name
-  discord:      "urish"                         # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "Micro tiles test module"      # One line description of what your project does
+  title:        "One Pixel DVD Logo"      # Project title
+  author:       "Sagar Dev Achar"             # Your name
+  discord:      "Seemebadnekai"                         # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Just a bouncing square rendered on VGA"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     0         # Clock frequency in Hz (or 0 if not applicable)
+  clock_hz:     25000000         # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
   tiles: "micro"          # Valid values: micro, 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_micro_test"
+  top_module:  "tt_um_micro_one_pixel_dvd_sda"
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:        
-    - "tt_um_micro_test.v"
+    - "tt_um_micro_one_pixel_dvd_sda.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: "in[0]"
-  ui[1]: "in[1]"
-  ui[2]: "in[2]"
-  ui[3]: "in[3]"
-  ui[4]: "in[4]"
-  ui[5]: "in[5]"
-  ui[6]: "in[6]"
-  ui[7]: "in[7]"
+  ui[0]: "Blue LSB"
+  ui[1]: "Blue MSB"
+  ui[2]: "Green LSB"
+  ui[3]: "Green MSB"
+  ui[4]: "Red LSB"
+  ui[5]: "Red MSB"
+  ui[6]: ""
+  ui[7]: ""
 
   # Outputs
-  uo[0]: "output[0] / counter[0]"
-  uo[1]: "output[1] / counter[1]"
-  uo[2]: "output[2] / counter[2]"
-  uo[3]: "output[3] / counter[3]"
-  uo[4]: "output[4] / counter[4]"
-  uo[5]: "output[5] / counter[5]"
-  uo[6]: "output[6] / counter[6]"
-  uo[7]: "output[7] / counter[7]"
+  uo[0]: "Video Red MSB"
+  uo[1]: "Video Green MSB"
+  uo[2]: "Video Blue MSB"
+  uo[3]: "Video V-Sync"
+  uo[4]: "Video Red LSB"
+  uo[5]: "Video Green LSB"
+  uo[6]: "Video Blue LSB"
+  uo[7]: "Video H-Sync"
 
   # Bidirectional pins - be be blank, not available for micro tile projects
   uio[0]: ""
