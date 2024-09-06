@@ -1,9 +1,9 @@
 /*
- * tt_um_factory_test.v
+ * tt_um_micro_one_pixel_dvd_sda.v
  *
- * Test user module
+ * One Pixel DVD Logo Screensaver
  *
- * Author: Sylvain Munaut <tnt@246tNt.com>
+ * Author: Sagar Dev Achar
  */
 
 `default_nettype none
@@ -45,45 +45,67 @@ module tt_um_micro_one_pixel_dvd_sda (
 
   assign {R, G, B} = video_active ? (((pix_x[9:5] == dvd_x) && (pix_y[8:5] == dvd_y)) ? ui_in[5:0] : ~ui_in[5:0]) : 6'b00_00_00;
   
-  reg vsync_2;
-  always @(posedge vsync) begin
+  reg en_vsync;
+  reg vsync2;
+  reg en_vsync2;
+
+  always @(posedge clk) begin
     if (~rst_n) begin
-      vsync_2 <= 1'b0;
+      vsync2 <= 1'b0;
+      en_vsync <= 1'b1;
     end else begin
-      vsync_2 <= ~vsync_2;
+      if (en_vsync) begin
+          if (vsync) begin
+            en_vsync <= 1'b0;
+            vsync2 <= ~vsync2;
+          end
+      end else begin
+        if (~vsync)
+          en_vsync <= 1'b1;
+      end
     end
   end
-
-  always @(posedge vsync_2) begin
+  
+  always @(posedge clk) begin
     if (~rst_n) begin
-      dvd_x <= 5'd10;
-      dvd_y <= 4'd7;
+      dvd_x <= 5'd0;
+      dvd_y <= 4'd1;
       dir_x <= ui_in[7];
       dir_y <= ui_in[6];
+      
+      en_vsync2 <= 1'b1;
     end else begin
-      // dvd_x <= dvd_x + 1;
-      if (dir_x) begin
-        if (dvd_x == 5'd19)
-          dir_x <= ~dir_x;
-        else
-          dvd_x <= dvd_x + 1;
-      end else begin
-        if (dvd_x == 5'd0)
-          dir_x <= ~dir_x;
-        else
-          dvd_x <= dvd_x - 1;
-      end
+      if (en_vsync2) begin
+          if (vsync2) begin
+            en_vsync2 <= 1'b0;
 
-      if (dir_y) begin
-        if (dvd_y == 4'd14)
-          dir_y <= ~dir_y;
-        else
-          dvd_y <= dvd_y + 1;
+            if (dir_x) begin
+              if (dvd_x == 5'd19)
+                dir_x <= ~dir_x;
+              else
+                dvd_x <= dvd_x + 1;
+            end else begin
+              if (dvd_x == 5'd0)
+                dir_x <= ~dir_x;
+              else
+                dvd_x <= dvd_x - 1;
+            end
+
+            if (dir_y) begin
+              if (dvd_y == 4'd14)
+                dir_y <= ~dir_y;
+              else
+                dvd_y <= dvd_y + 1;
+            end else begin
+              if (dvd_y == 4'd0)
+                dir_y <= ~dir_y;
+              else
+                dvd_y <= dvd_y - 1;
+            end
+          end
       end else begin
-        if (dvd_y == 4'd0)
-          dir_y <= ~dir_y;
-        else
-          dvd_y <= dvd_y - 1;
+        if (~vsync2)
+          en_vsync2 <= 1'b1;
       end
     end
   end
