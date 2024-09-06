@@ -45,7 +45,16 @@ module tt_um_micro_one_pixel_dvd_sda (
 
   assign {R, G, B} = video_active ? (((pix_x[9:5] == dvd_x) && (pix_y[8:5] == dvd_y)) ? ui_in[5:0] : ~ui_in[5:0]) : 6'b00_00_00;
   
+  reg vsync_2;
   always @(posedge vsync) begin
+    if (~rst_n) begin
+      vsync_2 <= 1'b0;
+    end else begin
+      vsync_2 <= ~vsync_2;
+    end
+  end
+
+  always @(posedge vsync_2) begin
     if (~rst_n) begin
       dvd_x <= 5'd10;
       dvd_y <= 4'd7;
@@ -81,4 +90,4 @@ module tt_um_micro_one_pixel_dvd_sda (
 
   wire _unused = &{pix_x[4:0], pix_y[9], pix_y[4:0]};
 
-endmodule  // tt_um_factory_test
+endmodule  // tt_um_micro_one_pixel_dvd_sda

@@ -27,8 +27,8 @@ pinout:
   ui[3]: "Green MSB"
   ui[4]: "Red LSB"
   ui[5]: "Red MSB"
-  ui[6]: ""
-  ui[7]: ""
+  ui[6]: "Change Start X-Direction"
+  ui[7]: "Change Start Y-Direction"
 
   # Outputs
   uo[0]: "Video Red MSB"
