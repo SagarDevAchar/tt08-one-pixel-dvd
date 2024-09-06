@@ -43,7 +43,7 @@ module tt_um_micro_one_pixel_dvd_sda (
     .vpos(pix_y)
   );
 
-  assign {R, G, B} = video_active ? (((pix_x[9:5] == dvd_x) && (pix_y[8:5] == dvd_y)) ? ui_in[5:0] : ~ui_in[5:0]) : 6'b00_00_00;
+  assign {R, G, B} = video_active ? (((pix_x[4:0] == dvd_x) && (pix_y[8:5] == dvd_y)) ? ui_in[5:0] : ~ui_in[5:0]) : 6'b00_00_00;
   
   reg en_vsync;
   reg vsync2;
