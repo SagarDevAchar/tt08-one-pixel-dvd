@@ -13,7 +13,7 @@
 
   "//": "PL_TARGET_DENSITY - You can increase this if Global Placement fails with error GPL-0302.",
   "//": "Users have reported that values up to 0.8 worked well for them.",
-  "PL_TARGET_DENSITY": 0.98,
+  "PL_TARGET_DENSITY": 0.95,
 
   "//": "CLOCK_PERIOD - Increase this in case you are getting setup time violations.",
   "//": "The value is in nanoseconds, so 40ns == 25MHz.",
@@ -81,7 +81,7 @@
 
   "//": "Use up to met2 layer",
   "DESIGN_IS_CORE": 0,
-  "RT_MAX_LAYER": "met2",
+  "RT_MAX_LAYER": "met4",
 
   "//": "MAGIC_DEF_LABELS may cause issues with LVS",
   "MAGIC_DEF_LABELS": 0,
