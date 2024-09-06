@@ -151,6 +151,6 @@ module tt_um_micro_one_pixel_dvd_sda (
     end
   end
 
-  wire _unused = &{pix_x[4:0], pix_y[9], pix_y[4:0]};
+  wire _unused = &{pix_x[5], pix_y[9], pix_y[4:0]};
 
 endmodule  // tt_um_micro_one_pixel_dvd_sda

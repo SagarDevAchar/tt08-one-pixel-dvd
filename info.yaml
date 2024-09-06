@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  title:        "One Pixel DVD Logo"      # Project title
+  title:        "One Pixel DVD Logo Screensaver"      # Project title
   author:       "Sagar Dev Achar"             # Your name
   discord:      "Seemebadnekai"                         # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Just a bouncing square rendered on VGA"      # One line description of what your project does
