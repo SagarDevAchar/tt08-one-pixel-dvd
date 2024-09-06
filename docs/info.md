@@ -15,6 +15,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 - Uses the [HVSync Generator from TinyTapeout](https://github.com/SagarDevAchar/vga-playground/blob/main/src/examples/common/hvsync_generator.v)
 - Keeps track of pixel position and directions and flips them when necessary
+- Smart idea by RebelMike to divide the Horizontal Timing by 16 to save the number of flops used!
 
 ## External hardware
 
