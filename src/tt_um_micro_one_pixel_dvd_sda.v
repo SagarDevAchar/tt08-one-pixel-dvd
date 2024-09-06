@@ -49,7 +49,7 @@ module tt_um_micro_one_pixel_dvd_sda (
   reg vsync2;
   // reg en_vsync2;
 
-  always @(posedge vsync) begin
+  always @(posedge vsync or negedge rst_n) begin
     if (~rst_n) begin
       vsync2 <= 1'b1;
     end else begin
@@ -74,7 +74,7 @@ module tt_um_micro_one_pixel_dvd_sda (
   //   end
   // end
 
-  always @(posedge vsync2) begin
+  always @(posedge vsync2 or negedge rst_n) begin
     if (~rst_n) begin
       dvd_x <= 5'd0;
       dvd_y <= 4'd1;
